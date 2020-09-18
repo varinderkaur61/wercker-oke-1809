@@ -63,7 +63,7 @@ build:
   after-steps: 
     - slack-notifier:
           url: $SLACK_URL 
-          channel: notifications 
+          channel: test 
           custom_message: Deploying $WERCKER_GIT_BRANCH to $WERCKER_DEPLOYTARGET_NAME ($WERCKER_DEPLOY_URL) 
 
 
@@ -80,7 +80,7 @@ deploy-to-minikube:
     
             
     - kubectl:
-        name: create deployent    
+        name: create pod   
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
@@ -88,7 +88,7 @@ deploy-to-minikube:
   after-steps: 
     - slack-notifier:
           url: $SLACK_URL 
-          channel: notifications 
+          channel: test
           custom_message: Deploying after kubernetes to OKE by $USERNAME
   
           
